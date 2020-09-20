@@ -1,0 +1,43 @@
+{
+  "name": "auth-server",
+  "version": "1.0.0",
+  "description": "### Author: Waleed Farraj",
+  "main": "index.js",
+  "dependencies": {
+    "@code-fellows/supergoose": "^1.0.11",
+    "base-64": "^0.1.0",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.9.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.6",
+    "mongoose-unique-validator": "^2.0.3",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.4",
+    "supertest": "^4.0.2"
+  },
+  "devDependencies": {
+    "jest": "^26.4.2"
+  },
+  "scripts": {
+    "test": "jest --verbose --coverage --detectOpenHandles",
+    "lint": "eslint './**/*.js' ",
+    "fix": "eslint './**/*.js'  --fix",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waleed-401-advanced-javascript/auth-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/waleed-401-advanced-javascript/auth-server/issues"
+  },
+  "homepage": "https://github.com/waleed-401-advanced-javascript/auth-server#readme"
+}
