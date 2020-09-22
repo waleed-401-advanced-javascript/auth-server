@@ -1,16 +1,19 @@
-'use strict';
+"use strict";
 
-const e = require('express');
-const express = require('express');
+const express = require("express");
 const basicAuth = require("./middleware/basic");
 const UserSchema = require("./models/users-model");
 const router = express.Router();
-
+/**
+ * get route to show all users
+ */
 router.get("/users", async (req, res) => {
     const data = await UserSchema.find({});
     res.status(200).send({ data });
   });
-  
+  /**
+   * route to sign up 
+   */
   router.post("/signup", async (req, res) => {
     const newUser = new UserSchema(req.body);
     const data = await newUser.save().catch(e => res.status(403).json("Name already taken allah b3enak try another one."));
@@ -18,7 +21,9 @@ router.get("/users", async (req, res) => {
     res.status(200).json({ data });
     }
   });
-  
+  /**
+   * route to sign in .
+   */
   router.post("/signin", basicAuth, async (req, res) => {
     const { user, isValid } = req;
     if (isValid) {
