@@ -2,6 +2,7 @@
 
 ### Author: Waleed Farraj
 
+This is a repo made to train on making sign in and sign up with basic authrization and session based token gernerated bearer authorization .
 ### Links and Resources
 
 n/a
@@ -26,7 +27,8 @@ then test routes on postman.
 
 #### Tests
 
-none
+/bad route 
+/secrte route
 
 #### UML
-![uml](./assets/1.5.png)
+![uml](./assets/3.png)
