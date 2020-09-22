@@ -14,9 +14,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const authRouter = require("./auth/router");
+const extraroutes=require("./auth/extra-routes");
 //  Routes
 app.use("/", authRouter);
+app.use("/",extraroutes);
 
+//error route
+app.get("/bad", (req, res, next) => {
+    res.status(500).json("Error!!");
+  });
 // 404 Errors
 app.use("*", notfound);
 
