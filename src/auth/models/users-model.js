@@ -7,9 +7,20 @@ const jwt = require("jsonwebtoken");
 const schema = mongoose.Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  // fullname: { type: String, required: true },
-  // email: { type: String, required: true },
+  fullname: { type: String, required: true },
+  email: { type: String, required: true },
+  role:{ type: String,enum: ["admin", "editor", "writer","user"],
+  default: "user"},
 });
+
+let roles = {
+  user: ["read"],
+  editor: ["read", "create", "update"],
+  admin: ["read","read-submisi" , "create", "update", "delete"],
+  writer: ["read", "create"]
+};
+
+
 
 schema.plugin(uniqueValidator);
 /**
@@ -55,6 +66,7 @@ schema.methods.bearerMiddleware = async function (token) {
     if (getuser.username) {
       return Promise.resolve({
         obj: obj,
+        // actions: roles[user.role],
         // eslint-disable-next-line comma-dangle
         user: getuser.username
       });
@@ -63,6 +75,12 @@ schema.methods.bearerMiddleware = async function (token) {
   } catch (error) {
     return Promise.reject();
   }
+};
+schema.methods.can = async function (permission){
+
+console.log("user======>",permission);
+
+
 };
 
 module.exports = mongoose.model("users", schema); // collection name - its schema
