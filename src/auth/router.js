@@ -8,8 +8,11 @@ const router = express.Router();
  * get route to show all users
  */
 router.get("/users", async (req, res) => {
+  
     const data = await UserSchema.find({});
+    
     res.status(200).send({ data });
+    console.log(data);
   });
   /**
    * route to sign up 
