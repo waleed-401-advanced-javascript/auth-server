@@ -2,10 +2,8 @@
 
 ### Author: Waleed Farraj
 
-This is a repo made to train on making sign in and sign up with basic authrization and session based token gernerated bearer authorization .
-### Links and Resources
+This is a repo made to train on the conspets of making sign in and sign up with basic authrization and session based token gernerated bearer authorization it also include role based authintaction where a user is restricted from accessing routes only for personal.
 
-n/a
 
 ### Setup
 * npm init -y
@@ -25,10 +23,21 @@ n/a
 node index.js 
 then test routes on postman.
 
-#### Tests
-
+#### routes
+```
+post/signin
+post/signup
+get/users
+get/read all users can access
+post/add writer and above can access
+put/change editor and admin acess
+delete/change only admin
+```
+###### test routes
+```
 /bad route 
 /secrte route
+```
 
 #### UML
-![uml](./assets/3.png)
+![uml](./assets/4.png)

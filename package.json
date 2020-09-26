@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "@code-fellows/supergoose": "^1.0.11",
+    "axios": "^0.20.0",
     "base-64": "^0.1.0",
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
@@ -22,7 +23,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "jest --verbose --coverage --detectOpenHandles",
+    "test": "jest --verbose --coverage ",
     "lint": "eslint './**/*.js' ",
     "fix": "eslint './**/*.js'  --fix",
     "start": "node server.js",

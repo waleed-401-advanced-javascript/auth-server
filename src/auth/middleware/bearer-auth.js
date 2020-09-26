@@ -1,30 +1,22 @@
-"use strict";
-const users = require("../models/users-model");
+/* eslint-disable consistent-return */
+const User = require("../models/users-model");
 /**
  * 
- * @param {*we will need the authrization in the headers to check the type and the token} req 
- * @param {*no input needed} res 
- * @param {* no input needed} next 
+ * @param {*this will hold the authorization type and the cridentials that we need to generate the token} req 
+ * @param {*} res 
+ * @param {*} next 
  */
-module.exports  = (req, res, next) => {
-    console.log("authorization",req.headers.authorization);
-    if (!req.headers.authorization) {
-        return "Error authorization not exist .. !";
-    }
-    let newuser=new users();
-    const auth = req.headers.authorization.split(" ");
-    if (auth[0] === "Bearer") {
-        console.log("req.headers.authorization ---> ", req.headers.authorization);
-        const token = auth[1];
-        newuser.bearerMiddleware(token).then(validuser => {
-            //console.log('bearerMiddleware ---> valid : ', validuser);
-            req.user = validuser;
-            next();
-        }).catch(err => next("Invalid Token!"));
 
-    } else {
-        return next("Invalid Bearer!!");
-    }
-
-
-}; 
+module.exports = (req, res, next) => {
+  if (!req.headers.authorization) return next("authorization header is empty !");
+  const auth = req.headers.authorization.split(" ");
+  if (auth[0] === "Bearer") {
+    const token = auth[1];
+    User.decodeToken(token).then((userData) => {
+      req.user = userData;
+      next();
+    }).catch((err) => next(err.message));
+  } else {
+    return next("Invalid Bearer!!");
+  }
+};
