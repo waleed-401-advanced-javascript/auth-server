@@ -59,7 +59,7 @@ describe("Server error", () => {
     }));
 });
 
-describe("test crud as a user", async () => {
+describe("test crud as a user",  () => {
   const userData = {
     username: "waleed",
     password: "1234756",
@@ -91,7 +91,6 @@ describe("test crud as a user", async () => {
       .auth(results.body.token, {
         type: "bearer",
       });
-      console.log("daaaaaaaaaaaaaaaaaaaaaaaaataaa =>>>>>>",data);
     expect(data.statusCode).toBe(200);
   });
   it("test create", async () => {
