@@ -59,17 +59,20 @@ describe("Server error", () => {
     }));
 });
 
-describe("test crud as a user",  () => {
+describe("testing crud as a person with a user only role",  () => {
   const userData = {
     username: "waleed",
     password: "1234756",
 
   };
-  beforeEach(async () => {
-    await mockRequest.post("/signup").send(userData);
-  });
+//   beforeEach(async () => {
+//     jest.resetModules();
+//     await mockRequest.post("/signup").send(userData);
+//   });
 
   it("test inValid Bearer", async () => {
+  
+    
     const data = await mockRequest.get("/read")
       .auth("token", {
         type: "bearer",

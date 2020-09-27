@@ -24,6 +24,10 @@ module.exports = async function (req, res, next) {
     next();
   } catch (e) { next(`ERROR: ${e.message}`); }
 };
+/**
+ * 
+ * @param {*the code that we are getting from the api request to github} code 
+ */
 
 async function exchangeCodeForToken(code) {
   const tokenResponse = await axios({
@@ -38,6 +42,11 @@ async function exchangeCodeForToken(code) {
   return accessToken;
 }
 
+/**
+ * 
+ * @param {this will send the token that we genarted in authorization to get the data that we need for login from github} token 
+ */
+
 async function getRemoteUserInfo(token) {
   const userResponse = await axios.get("https://api.github.com/user", {
     headers: {
@@ -47,7 +56,10 @@ async function getRemoteUserInfo(token) {
   const user = userResponse.data;
   return user;
 }
-
+/**
+ * 
+ * @param {this will movet the data retrived to out database } remoteUser 
+ */
 async function getUser(remoteUser) {
   const userRecord = {
     username: remoteUser.login,
