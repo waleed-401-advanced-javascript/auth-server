@@ -56,7 +56,7 @@ schema.statics.decodeToken = function (token) {
 const roles = {
   user: ["read"],
   editor: ["read", "create", "update"],
-  admin: ["read", "read-submisi", "create", "update", "delete"],
+  admin: ["read", "create", "update", "delete"],
   writer: ["read", "create"],
 };
 

@@ -14,10 +14,12 @@
 
   <script>
 
-    let URL = "https://github.com/login/oauth/authorize";
 
+    let URL = "https://github.com/login/oauth/authorize";
+// these options are passed in the query and needed by github
     let options = {
-      client_id: 'd345407e011e80237654',
+      client_id: 'Iv1.5440219e6a3eb57d',
+      redirect_uri: 'http://localhost:3000/oauth',     
       scope: 'read:user',
     }
 
